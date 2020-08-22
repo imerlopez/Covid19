@@ -7,8 +7,10 @@ set -e
 npm run build
 
 # navigate into the build output directory
-cp dist docs -r
-cp docs/css/* docs/
+rm docs -r
+mkdir docs
+cp dist/* docs -r
+#cp docs/css/* docs/
 
 
 # if you are deploying to a custom domain
