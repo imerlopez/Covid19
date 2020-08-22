@@ -37,7 +37,7 @@ export default {
 
     getGlobalCount(){
 
-      fetch('https://corona.lmao.ninja/all')
+      fetch('https://corona.lmao.ninja/v2/all')
       .then(response => response.json())
       .then(data =>{
         this.number =data
@@ -72,4 +72,6 @@ export default {
   .introTop{ 
     padding: 32px;
   }
+
+
 </style>

@@ -45,7 +45,7 @@ export default {
   },
     methods: {
       getCountryNames() {
-          fetch('https://corona.lmao.ninja/countries?sort=country')
+          fetch('https://corona.lmao.ninja/v2/countries?sort=country')
           .then(response => response.json())
           .then(data => {
               this.globalData = data
@@ -57,7 +57,7 @@ export default {
       },
 
         getCountryData() {
-          fetch(`https://corona.lmao.ninja/countries/${this.selected}`)
+          fetch(`https://corona.lmao.ninja/v2/countries/${this.selected}`)
           .then(response => response.json())
           .then(data => {
               this.countryData = data
@@ -65,12 +65,13 @@ export default {
               this.countryFlag = data.countryInfo.flag
               this.selectedISO3 = data.countryInfo.iso3
               this.getCountryHistory()
+              
           })
     
       },
 
         getCountryHistory() {
-          fetch(`https://covidapi.info/api/v1/country/${this.selectedISO3}`)
+          fetch(`https://covidapi.info/api/v1/country/${this.selectedISO3}`)//
           .then(response => response.json())
           .then(data => {
               console.log(data)
