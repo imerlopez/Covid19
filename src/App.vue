@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <Navigation/>
+    <Navigation />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import Navigation from './components/Navigation.vue'
+import Navigation from "./components/Navigation.vue";
+// import Footer from "./components/Footer.vue";
 //import Number from './components/Number.vue'
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Navigation,
-  }
-}
+  },
+};
 </script>
 
 <style>

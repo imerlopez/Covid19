@@ -1,77 +1,84 @@
 <template>
-    <div>
-        <h1 class="introTop">Global Statistics | Covid 19 | Belize</h1>
-        <Number :data ="number"/>
-        <b-row> 
-          <b-col><Chart :data="globalData" :type="'cases'"/></b-col>
-          <b-col><Chart :data ="globalData" :type ="'deaths'"/></b-col>
-        </b-row>
+  <div class="card-content">
+    <h1 class="introTop">Global Statistics | Covid 19 | Belize</h1>
+    <div class="mt-3">
+      <b-card-group deck>
+        <b-card
+          bg-variant="info"
+          text-variant="white"
+          font="bold"
+          header=" Cases"
+          class="text-center"
+        >
+          <i class="fa-solid fa-chart-line"></i>
+          <b-card-text> {{ number.cases }}</b-card-text>
+        </b-card>
 
-       
+        <b-card
+          bg-variant="success"
+          text-variant="white"
+          header="Recovered"
+          class="text-center"
+        >
+          <i class="fa-solid fa-hand-holding-medical"></i>
+          <b-card-text>{{ number.recovered }}</b-card-text>
+        </b-card>
+
+        <b-card
+          bg-variant="danger"
+          text-variant="white"
+          header="Deaths"
+          class="text-center"
+        >
+          <i class="fa-solid fa-skull-crossbones"></i>
+          <b-card-text>{{ number.deaths }}</b-card-text>
+        </b-card>
+      </b-card-group>
+      <div class="graph">
+        <bar-chart></bar-chart>
+      </div>
     </div>
-</template> 
+  </div>
+</template>
 <script>
-
-import Number from './components/Number.vue'
-import Chart from './components/GraphInfo.vue'
+// import Number from "./components/Number.vue";
+import BarChart from "./components/BarChart.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Number,
-    Chart
+    BarChart,
   },
-  data(){
+  data() {
     return {
       number: null,
-      globalDate:{},
-      dataGlobalChart:[10,39, 10,40,39,0,0]
-    }
+    };
   },
-  created(){
-    this.getGlobalCount()
-    this.getGlobalData()
+  created() {
+    this.getGlobalCount();
+    // this.getGlobalData();
   },
 
-  methods:{
-
-    getGlobalCount(){
-
-      fetch('https://corona.lmao.ninja/v2/all')
-      .then(response => response.json())
-      .then(data =>{
-        this.number =data
-      })
-
+  methods: {
+    getGlobalCount() {
+      fetch("https://corona.lmao.ninja/v2/all")
+        .then((response) => response.json())
+        .then((data) => {
+          this.number = data;
+        });
     },
-
-    getGlobalData(){
-
-      fetch('https://covidapi.info/api/v1/global/count')
-      .then(response => response.json())
-      .then(data => {
-
-        this.globalData = data
-        this.dataGlobalChart = this.getGraphicData()
-      })
-    },
-
-    getGraphicData (){
-
-      var tArray = []
-      for(let[key, value] of Object.entries(this.globalData.result)){
-        console.log(key)
-        tArray.push(value.confirmed)
-      }
-      return  tArray
-    }
-  }
-}
+  },
+};
 </script>
 <style>
-  .introTop{ 
-    padding: 32px;
-  }
-
-
+.introTop {
+  padding: 32px;
+  margin-top: auto;
+}
+.card-content {
+  margin: 20px;
+}
+.graph {
+  padding: 30px;
+}
 </style>
