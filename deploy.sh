@@ -7,7 +7,7 @@ set -e
 npm run build
 
 # navigate into the build output directory
-rm docs -r
+#rm docs -r
 mkdir docs
 cp dist/* docs -r
 #cp docs/css/* docs/
