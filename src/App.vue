@@ -6,10 +6,7 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 import Navigation from "./components/Navigation.vue";
-// import Footer from "./components/Footer.vue";
-//import Number from './components/Number.vue'
 
 export default {
   name: "App",

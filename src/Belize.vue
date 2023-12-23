@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     getCountryNames() {
-      fetch("https://corona.lmao.ninja/v2/countries?sort=country")
+      fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
           this.globalData = data;
@@ -89,7 +89,7 @@ export default {
     },
 
     getCountryData() {
-      fetch(`https://corona.lmao.ninja/v2/countries/${this.selected}`)
+      fetch(`https://disease.sh/v3/covid-19/countries/${this.selected}`)
         .then((response) => response.json())
         .then((data) => {
           this.countryData = data;
@@ -101,7 +101,7 @@ export default {
     },
 
     getCountryHistory() {
-      fetch(`https://corona.lmao.ninja/v2/countries/${this.selected}`) //
+      fetch(`https://disease.sh/v3/covid-19/countries/${this.selected}`) //
         .then((response) => response.json())
         .then((data) => {
           this.countryHistory = data;

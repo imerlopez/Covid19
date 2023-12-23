@@ -61,7 +61,7 @@ export default {
 
   methods: {
     getGlobalCount() {
-      fetch("https://corona.lmao.ninja/v2/all")
+      fetch("https://disease.sh/v3/covid-19/all")
         .then((response) => response.json())
         .then((data) => {
           this.number = data;
